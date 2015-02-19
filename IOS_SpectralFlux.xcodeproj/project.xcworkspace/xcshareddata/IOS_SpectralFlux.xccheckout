@@ -10,6 +10,8 @@
 	<string>IOS_SpectralFlux</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
+		<key>D4A0D0E08D909A70B68DB1E19B13712D42DF479E</key>
+		<string>https://github.com/ppeau/AIFFDecoderPerformance.git</string>
 		<key>bb04667a-a645-7e4a-4cc3-ce57b7db7bff++505</key>
 		<string>https://github.com/ppeau/IOS-SpectralFlux/trunk</string>
 	</dict>
@@ -17,8 +19,10 @@
 	<string>IOS_SpectralFlux.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>bb04667a-a645-7e4a-4cc3-ce57b7db7bff++505</key>
+		<key>D4A0D0E08D909A70B68DB1E19B13712D42DF479E</key>
 		<string>../..</string>
+		<key>bb04667a-a645-7e4a-4cc3-ce57b7db7bff++505</key>
+		<string>../../../IOS-SpectralFlux</string>
 	</dict>
 	<key>IDESourceControlProjectRepositoryRootDictionary</key>
 	<dict>
@@ -26,13 +30,21 @@
 		<string>https://github.com/ppeau/IOS-SpectralFlux</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>https://github.com/ppeau/IOS-SpectralFlux/trunk/IOS_SpectralFlux.xcodeproj</string>
+	<string>https://github.com/ppeau/AIFFDecoderPerformance.git</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>bb04667a-a645-7e4a-4cc3-ce57b7db7bff++505</string>
+	<string>D4A0D0E08D909A70B68DB1E19B13712D42DF479E</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>D4A0D0E08D909A70B68DB1E19B13712D42DF479E</string>
+			<key>IDESourceControlWCCName</key>
+			<string>AIFFDecoderPerformance</string>
+		</dict>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.subversion</string>
