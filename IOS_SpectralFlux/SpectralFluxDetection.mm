@@ -60,7 +60,7 @@ NSDate* timeInterval_;
 
 // Get the ressource in char
 + (const char *)getFileOrigin {return [[[NSBundle mainBundle] pathForResource:@"OriginalFile" ofType:@"aiff"] UTF8String];}
-+ (const char *)getFileExported {return [[[NSBundle mainBundle] pathForResource:@"ExportedFile" ofType:@"aif"] UTF8String];}
++ (const char *)getFileExported {return [[[NSBundle mainBundle] pathForResource:@"ExportedFile" ofType:@"aiff"] UTF8String];}
 + (NSURL*) getUrlFilePath {
     return [NSURL fileURLWithPath:[NSString stringWithUTF8String:[SpectralFluxDetection getFileExported]]];
 }
