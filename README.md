@@ -6,7 +6,7 @@ AIFF file exported with AVAssetExportSession from Apple to extract file from iTu
 
 Decoder tested : 
 
-AVAssetReader From Apple : 5.094914 seconds
+AVAssetReader From Apple : 5.094914 seconds/n
 Bass From Unseen : 42.059900 seconds <-- Very bad
 Superpowered Decoder From Superpowered Inc : 0.798827 seconds
 
