@@ -2,9 +2,10 @@
 
 AIFF Decoder Performance for IOS 
 
-AIFF file exported with AVAssetExportSession from Apple to extract file from iTunes Library.
+.
 
-Decoder tested : 
+
+AIFF file exported with AVAssetExportSession from Apple to extract file from iTunes Library :
 
 AVAssetReader From Apple : 5.094914 seconds
 
