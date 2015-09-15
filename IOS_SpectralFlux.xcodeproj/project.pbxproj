@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BF8689AA1BA857E100D0E72C /* aac.m4a in Resources */ = {isa = PBXBuildFile; fileRef = BF8689A91BA857E100D0E72C /* aac.m4a */; settings = {ASSET_TAGS = (); }; };
+		BF8689AD1BA8633C00D0E72C /* wav.wav in Resources */ = {isa = PBXBuildFile; fileRef = BF8689AB1BA8633C00D0E72C /* wav.wav */; settings = {ASSET_TAGS = (); }; };
+		BF8689AE1BA8633C00D0E72C /* mp3.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BF8689AC1BA8633C00D0E72C /* mp3.mp3 */; settings = {ASSET_TAGS = (); }; };
 		BF97537E19D473E9008198F7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BF97537D19D473E9008198F7 /* main.m */; };
 		BF97538119D473E9008198F7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BF97538019D473E9008198F7 /* AppDelegate.m */; };
 		BF97538919D473E9008198F7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF97538819D473E9008198F7 /* Images.xcassets */; };
@@ -14,8 +17,7 @@
 		BF9753A619D47889008198F7 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF9753A419D47889008198F7 /* Accelerate.framework */; };
 		BF9753A719D47889008198F7 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF9753A519D47889008198F7 /* AVFoundation.framework */; };
 		BF9753AA19D4D6F7008198F7 /* SpectralFluxDetection.mm in Sources */ = {isa = PBXBuildFile; fileRef = BF9753A919D4D6F7008198F7 /* SpectralFluxDetection.mm */; };
-		BFD63D811A95733500F30A44 /* ExportedFile.aiff in Resources */ = {isa = PBXBuildFile; fileRef = BFD63D801A95733500F30A44 /* ExportedFile.aiff */; };
-		BFD63D831A9573D400F30A44 /* OriginalFile.aiff in Resources */ = {isa = PBXBuildFile; fileRef = BFD63D821A9573D400F30A44 /* OriginalFile.aiff */; };
+		BFD63D831A9573D400F30A44 /* aiff.aiff in Resources */ = {isa = PBXBuildFile; fileRef = BFD63D821A9573D400F30A44 /* aiff.aiff */; };
 		BFD63D861A95769400F30A44 /* libbass.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BFD63D841A95769400F30A44 /* libbass.a */; };
 		BFD63D891A957B6E00F30A44 /* libSuperpoweredAudio.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BFD63D871A957B6E00F30A44 /* libSuperpoweredAudio.a */; };
 		BFD63D8E1A957DD300F30A44 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFD63D8D1A957DD300F30A44 /* AudioToolbox.framework */; };
@@ -34,6 +36,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		BF8689A91BA857E100D0E72C /* aac.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = aac.m4a; sourceTree = "<group>"; };
+		BF8689AB1BA8633C00D0E72C /* wav.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = wav.wav; sourceTree = "<group>"; };
+		BF8689AC1BA8633C00D0E72C /* mp3.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = mp3.mp3; sourceTree = "<group>"; };
 		BF97537819D473E9008198F7 /* IOS_SpectralFlux.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IOS_SpectralFlux.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF97537C19D473E9008198F7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BF97537D19D473E9008198F7 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -47,8 +52,7 @@
 		BF9753A519D47889008198F7 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		BF9753A819D4D6F7008198F7 /* SpectralFluxDetection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpectralFluxDetection.h; sourceTree = "<group>"; };
 		BF9753A919D4D6F7008198F7 /* SpectralFluxDetection.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = SpectralFluxDetection.mm; sourceTree = "<group>"; };
-		BFD63D801A95733500F30A44 /* ExportedFile.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = ExportedFile.aiff; sourceTree = "<group>"; };
-		BFD63D821A9573D400F30A44 /* OriginalFile.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = OriginalFile.aiff; sourceTree = "<group>"; };
+		BFD63D821A9573D400F30A44 /* aiff.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = aiff.aiff; sourceTree = "<group>"; };
 		BFD63D841A95769400F30A44 /* libbass.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libbass.a; path = ../libbass.a; sourceTree = "<group>"; };
 		BFD63D851A95769400F30A44 /* bass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = bass.h; path = ../bass.h; sourceTree = "<group>"; };
 		BFD63D871A957B6E00F30A44 /* libSuperpoweredAudio.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libSuperpoweredAudio.a; path = ../libSuperpoweredAudio.a; sourceTree = "<group>"; };
@@ -146,8 +150,10 @@
 		BF9753A119D474FD008198F7 /* Audio */ = {
 			isa = PBXGroup;
 			children = (
-				BFD63D821A9573D400F30A44 /* OriginalFile.aiff */,
-				BFD63D801A95733500F30A44 /* ExportedFile.aiff */,
+				BF8689AB1BA8633C00D0E72C /* wav.wav */,
+				BF8689AC1BA8633C00D0E72C /* mp3.mp3 */,
+				BF8689A91BA857E100D0E72C /* aac.m4a */,
+				BFD63D821A9573D400F30A44 /* aiff.aiff */,
 			);
 			name = Audio;
 			sourceTree = "<group>";
@@ -252,8 +258,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				BF97538919D473E9008198F7 /* Images.xcassets in Resources */,
-				BFD63D831A9573D400F30A44 /* OriginalFile.aiff in Resources */,
-				BFD63D811A95733500F30A44 /* ExportedFile.aiff in Resources */,
+				BF8689AE1BA8633C00D0E72C /* mp3.mp3 in Resources */,
+				BF8689AD1BA8633C00D0E72C /* wav.wav in Resources */,
+				BFD63D831A9573D400F30A44 /* aiff.aiff in Resources */,
+				BF8689AA1BA857E100D0E72C /* aac.m4a in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

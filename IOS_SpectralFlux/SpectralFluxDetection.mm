@@ -59,10 +59,13 @@ NSDate* timeInterval_;
 
 
 // Get the ressource in char
-+ (const char *)getFileOrigin {return [[[NSBundle mainBundle] pathForResource:@"OriginalFile" ofType:@"aiff"] UTF8String];}
-+ (const char *)getFileExported {return [[[NSBundle mainBundle] pathForResource:@"ExportedFile" ofType:@"aiff"] UTF8String];}
++ (const char *)getAACFile {return [[[NSBundle mainBundle] pathForResource:@"aac" ofType:@"m4a"] UTF8String];}
++ (const char *)getAIFFFile {return [[[NSBundle mainBundle] pathForResource:@"aiff" ofType:@"aiff"] UTF8String];}
++ (const char *)getMP3File {return [[[NSBundle mainBundle] pathForResource:@"mp3" ofType:@"mp3"] UTF8String];}
++ (const char *)getWAFFile {return [[[NSBundle mainBundle] pathForResource:@"wav" ofType:@"wav"] UTF8String];}
+
 + (NSURL*) getUrlFilePath {
-    return [NSURL fileURLWithPath:[NSString stringWithUTF8String:[SpectralFluxDetection getFileExported]]];
+    return [NSURL fileURLWithPath:[NSString stringWithUTF8String:[SpectralFluxDetection getWAFFile]]];
 }
 
 
@@ -72,9 +75,9 @@ NSDate* timeInterval_;
 /// ===========================--------------
 - (void) getPCMWithSuperPowered {
 
-    printf("--------------------------------------------\n");
-    printf("Started getPCMWithSuperPowered\n");
-    printf("--------------------------------------------\n");
+    //printf("--------------------------------------------\n");
+    //printf("Started getPCMWithSuperPowered\n");
+    //printf("--------------------------------------------\n");
 
     SuperpoweredDecoder *decoder = new SuperpoweredDecoder(false);
     const char *openError = decoder->open([[[SpectralFluxDetection getUrlFilePath] path] UTF8String], false, 0, 0);
@@ -89,6 +92,7 @@ NSDate* timeInterval_;
     short int *intBuffer = (short int *)malloc(decoder->samplesPerFrame * 2 * sizeof(short int) + 16384);
     float *floatBuffer = (float *)malloc(decoder->samplesPerFrame * 2 * sizeof(float) + 16384);
     
+    
     timeInterval_ = [NSDate date];
     
     while (true)
@@ -101,26 +105,28 @@ NSDate* timeInterval_;
         progress_ = (int)(((float)decoder->samplePosition/(float)decoder->durationSamples)*100);
         
         if(progress_ > progressEx_) { // Send progress to main thread
-            printf("Progress : %hd\n", progress_);
+            //printf("Progress : %hd\n", progress_);
             progressEx_ = progress_;
         }
     }
     
+
+    
+    NSTimeInterval interval = [[NSDate date] timeIntervalSinceDate:timeInterval_];
+    //printf("--------------------------------------------\n");
+    printf("Finished with SuperPowered in : %f | samples : %u\n", interval, decoder->durationSamples);
+    //printf("--------------------------------------------\n");
+    
     delete decoder;
     free(intBuffer);
     free(floatBuffer);
-    
-    NSTimeInterval interval = [[NSDate date] timeIntervalSinceDate:timeInterval_];
-    printf("--------------------------------------------\n");
-    printf("Finished getPCMWithBass in : %f for %f min(s)\n", interval, interval);
-    printf("--------------------------------------------\n");
 }
 
 - (void) getPCMWithBass {
 
-    printf("--------------------------------------------\n");
-    printf("Started getPCMWithBass\n");
-    printf("--------------------------------------------\n");
+    //printf("--------------------------------------------\n");
+    //printf("Started getPCMWithBass\n");
+    //printf("--------------------------------------------\n");
     
     BASS_SetConfig(BASS_CONFIG_IOS_MIXAUDIO, 2);
     BASS_Init(-1, 44100, 0, 0, NULL);
@@ -135,6 +141,8 @@ NSDate* timeInterval_;
     
     uint64_t length = BASS_ChannelGetLength(decoder, BASS_POS_BYTE);
     
+    //printf("samples : %llu\n", (length/sizeof(float))/2);
+    
     while (BASS_ChannelIsActive(decoder))
     {
         size_t c = BASS_ChannelGetData(decoder, buf, sizeof(buf)|BASS_DATA_FLOAT);
@@ -147,25 +155,25 @@ NSDate* timeInterval_;
         if(currentPercent != percent)
         {
             currentPercent = percent;
-            printf("Progress : %llu\n", percent);
+            //printf("Progress : %llu\n", percent);
         }
     }
     
     BASS_StreamFree(decoder);
     
     NSTimeInterval interval = [[NSDate date] timeIntervalSinceDate:timeInterval_];
-    printf("--------------------------------------------\n");
-    printf("Finished getPCMWithBass in : %f for %f min(s)\n", interval, interval);
-    printf("--------------------------------------------\n");
+    //printf("--------------------------------------------\n");
+    printf("Finished with bass Unseen in : %f | samples : %llu\n", interval, (length/sizeof(float))/2);
+    //printf("--------------------------------------------\n");
     // ================------------------
 
 }
 
 - (void) getPCMWithCoreAudio {
     
-    printf("--------------------------------------------\n");
-    printf("Started getPCMWithCoreAudio\n");
-    printf("--------------------------------------------\n");
+    //printf("--------------------------------------------\n");
+    //printf("Started getPCMWithCoreAudio\n");
+    //printf("--------------------------------------------\n");
     
     timeInterval_ = [NSDate date];
     
@@ -186,10 +194,14 @@ NSDate* timeInterval_;
     
     AVAssetReaderTrackOutput *output = [[AVAssetReaderTrackOutput alloc] initWithTrack:songTrack outputSettings:outputSettingsDict];
     [reader addOutput:output];
+    
+    //printf("Samples : %lli\n", output.track.totalSampleDataLength);
+    
     output = nil;
     [reader startReading];
     
-
+    long long totalSamples = 0;
+    
     int percentFrameCount = -1;
     
     while (reader.status == AVAssetReaderStatusReading)
@@ -202,12 +214,14 @@ NSDate* timeInterval_;
             CMTime progressTime = CMSampleBufferGetPresentationTimeStamp(sampleBufferRef);
             CMTime sampleDuration = CMSampleBufferGetDuration(sampleBufferRef);
             
+            totalSamples = totalSamples + sampleDuration.value;
+            
             if (CMTIME_IS_NUMERIC(sampleDuration)) progressTime= CMTimeAdd(progressTime, sampleDuration);
             __block int percent = (CMTimeGetSeconds(progressTime) / CMTimeGetSeconds(asset.duration)*100);
             
             if(percentFrameCount < percent)
             {
-                printf("Progress : %i\n", percent);
+                //printf("Progress : %i | sampleDuration : %lli\n", percent, sampleDuration.value);
                 percentFrameCount++;
             }
 
@@ -221,11 +235,13 @@ NSDate* timeInterval_;
         return;
     }
     
+    //printf("Samples : %lli\n", totalSamples);
+    
     NSTimeInterval interval = [[NSDate date] timeIntervalSinceDate:timeInterval_];
     
-    printf("--------------------------------------------\n");
-    printf("Finished getPCMWithCoreAudio in : %f for %f min(s)\n", interval, CMTimeGetSeconds(asset.duration)/60);
-    printf("--------------------------------------------\n");
+    //printf("--------------------------------------------\n");
+    printf("Finished getPCMWithCoreAudio in : %f | samples : %lli\n", interval, totalSamples);
+    //printf("--------------------------------------------\n");
     
     return;
 }

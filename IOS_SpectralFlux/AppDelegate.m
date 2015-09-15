@@ -29,6 +29,8 @@
     
     SpectralFluxDetection *spectralFlux = [[SpectralFluxDetection alloc] init];
     [spectralFlux getPCMWithBass];
+    [spectralFlux getPCMWithCoreAudio];
+    [spectralFlux getPCMWithSuperPowered];
     return YES;
 }
 
